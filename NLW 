@@ -1,0 +1,2 @@
+DELETE FROM 'orphanages';
+DELETE FROM 'images';

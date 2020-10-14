@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-/* eslint-disable class-methods-use-this, import/prefer-default-export */
+/* eslint class-methods-use-this: off, import/prefer-default-export: off */
 export class createImages1602643814153 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(new Table({

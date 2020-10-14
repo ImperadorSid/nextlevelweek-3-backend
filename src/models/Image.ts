@@ -1,9 +1,7 @@
 import {
   Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn,
 } from 'typeorm';
-/* eslint-disable import/no-cycle */
-import Orphanage from './Orphanage';
-/* eslint-enable */
+import Orphanage from './Orphanage'; /* eslint import/no-cycle: off */
 
 @Entity('images')
 export default class Image {
