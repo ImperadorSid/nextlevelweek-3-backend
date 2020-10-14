@@ -1,9 +1,11 @@
 import {
   Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn,
 } from 'typeorm';
-import { IImage } from './IImage';
 
-/* eslint-disable camelcase */
+/* eslint-disable import/no-cycle */
+import Image from './Image';
+/* eslint-enable */
+
 @Entity('orphanages')
 export default class Orphanage {
   @PrimaryGeneratedColumn('increment')
@@ -30,10 +32,9 @@ export default class Orphanage {
   @Column()
   openOnWeekends: boolean;
 
-  @OneToMany('Image', 'orphanage', {
+  @OneToMany(() => Image, (image) => image.orphanage, {
     cascade: ['insert', 'update'],
   })
   @JoinColumn({ name: 'orphanageId' })
-  images: IImage[]
+  images: Image[]
 }
-/* eslint-enable */

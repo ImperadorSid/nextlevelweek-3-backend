@@ -1,9 +1,10 @@
 import {
   Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn,
 } from 'typeorm';
-import { IOrphanage } from './IOrphanage';
+/* eslint-disable import/no-cycle */
+import Orphanage from './Orphanage';
+/* eslint-enable */
 
-/* eslint-disable camelcase */
 @Entity('images')
 export default class Image {
   @PrimaryGeneratedColumn('increment')
@@ -12,8 +13,7 @@ export default class Image {
   @Column()
   path: string;
 
-  @ManyToOne('Orphanage', 'images')
+  @ManyToOne(() => Orphanage, (orphanage) => orphanage.images)
   @JoinColumn({ name: 'orphanageId' })
-  orphanage: IOrphanage
+  orphanage: Orphanage
 }
-/* eslint-enable */
